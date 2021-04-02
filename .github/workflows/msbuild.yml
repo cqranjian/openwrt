@@ -549,7 +549,7 @@ jobs:
       run: |
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
         touch release.txt
-        echo "[固件源码](https://github.com/coolsnowwolf/lede)" >> release.txt
+        echo "[固件源码](https://github.com/Lienol/openwrt)" >> release.txt
         echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "📥 固件下载" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [国内NN网盘](${{ steps.cowtransfer.outputs.url }})" >> release.txt
@@ -559,7 +559,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
-        GITHUB_TOKEN: ${{ secrets.RELEASELEDE2_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       with:
         name: ${{ env.FILE_TIME }} 「 LEDE5.4.86-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
@@ -573,7 +573,7 @@ jobs:
         keep_latest: 9
         delete_tags: true
       env:
-        GITHUB_TOKEN: ${{ secrets.RELEASELEDE2_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
 
     - name: 微信报告
       uses: emon100/Action-Serverchan@master

@@ -523,7 +523,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: LEDE_5.4.86${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: openwrt_19.07${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: 上传固件到NN网盘
